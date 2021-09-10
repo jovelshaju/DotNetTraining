@@ -78,5 +78,59 @@ namespace ConsoleApp2
             }
             
         }
+        static void NestedArrayDemo()
+        {
+            int[,,] arrd3 = new int[2, 2, 3] { { { 1, 2, 3 }, { 4, 5, 6} }, { { 7, 8, 9 }, { 10, 11, 12} } };
+            int[,] arr = { { 1, 2, 3 }, { 1,2,1 } };
+        }
+
+        static void SearchingArray()
+        {
+            string[] names = { "Vinay", "Bill", "Bill Gates", "Lazar", "Mohan", "Nikhil", "Boski" };
+            var stringToFind = "Vinay";
+
+            var result = Array.Find(names, element => element == stringToFind);
+            Console.WriteLine(result);
+        }
+
+        static void CountingElements()
+        {
+            int[] numsArray = {5,7,9,15,6,3,54,31 };
+            var theCount = numsArray.Count(n => n % 3 == 0);
+            Console.WriteLine(theCount);
+        }
+
+        static void  MergingArrays()
+        {
+            int[] numArray1 = { 1,3,5,7};
+            int[] numArray2 = { 2,4,6,8 };
+
+            var all = numArray1.Union(numArray2).ToArray();
+            Console.WriteLine(all);
+        }
+
+        static void UsingJoin()
+        {
+            int[] nums = { 1, 2, 3, 4 };
+            var str = String.Join(",", nums);
+
+            Console.WriteLine(str);
+        }
+
+        static void UsingDistinct()
+        {
+            string[] names = { "Vinay", "Bill", "Vinay", "Lazar", "Mohan", "Nikhil", "Boski" };
+            string[] dist = names.Distinct().ToArray();
+
+            Console.WriteLine(dist);
+        }
+
+        static void SortingArray()
+        {
+            string[] names = { "Vinay", "Bill",  "Lazar", "Mohan", "Nikhil", "Boski" };
+            Array.Sort(names);
+
+            Console.WriteLine(names);
+        }
     }
 }
