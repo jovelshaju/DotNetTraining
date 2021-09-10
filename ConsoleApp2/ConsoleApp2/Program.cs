@@ -4,14 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//This file contains Excercises done in Day-2.
 namespace ConsoleApp2
 {
     class Program
     {
         static void Main(string[] args)
         {
-            AddNumbers();
+            //AddNumbers();
+            //TryingIntParsing();
+            //UnboxingDemo();
+            TryingEqn();
+
             Console.ReadLine();
+
 
         }
 
@@ -29,6 +35,48 @@ namespace ConsoleApp2
 
             Console.WriteLine($"{num1} + {num2} = {sum}");
 
+        }
+
+        static void TryingIntParsing()
+        {
+            string val = null;
+            int result;
+            bool success = int.TryParse(val, out result);
+            Console.WriteLine($"{success}");
+        }
+
+        static void UnboxingDemo()
+        {
+            Object MyObj = 30;
+            int i = (int)MyObj;
+            Console.WriteLine(i);
+        }
+
+        static void TryingEqn()
+        {
+
+            Console.WriteLine("Function for x=y2+2y+1\n===========");
+            while (true)
+            {
+                Console.WriteLine("Enter y:");
+                string input = Console.ReadLine();
+                try
+                {
+                    if (input == "q")
+                    {
+                        break;
+                    }
+                    
+                    double x = Math.Pow(int.Parse(input), 2) + y * 2 + 1;
+                    Console.WriteLine($"x = {(int)x}");
+                }
+                catch
+                {
+                    Console.WriteLine("Please Enter an integer");
+                }
+                
+            }
+            
         }
     }
 }
