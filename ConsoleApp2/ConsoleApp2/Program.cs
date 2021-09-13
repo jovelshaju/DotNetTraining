@@ -14,7 +14,9 @@ namespace ConsoleApp2
             //AddNumbers();
             //TryingIntParsing();
             //UnboxingDemo();
-            TryingEqn();
+            //TryingEqn();
+
+            
 
             Console.ReadLine();
 
@@ -66,8 +68,9 @@ namespace ConsoleApp2
                     {
                         break;
                     }
-                    
-                    double x = Math.Pow(int.Parse(input), 2) + y * 2 + 1;
+
+                    int y = int.Parse(input);
+                    double x = Math.Pow(y, 2) + y * 2 + 1;
                     Console.WriteLine($"x = {(int)x}");
                 }
                 catch
