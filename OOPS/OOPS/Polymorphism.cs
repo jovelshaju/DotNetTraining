@@ -10,7 +10,7 @@ namespace OOPS
     {
         Director, Delivery_Manager
     }
-    class User
+    abstract class User
     {
         public const int age = 10;
         public string name { get; }
@@ -22,10 +22,11 @@ namespace OOPS
             Console.WriteLine($"Age = {age}");
             this.name = name;
         }
-        public void Enter()
+        public abstract void Enter();
+        
+        public string GetName()
         {
-            Console.WriteLine("1");
-           
+            return this.name;
         }
     }
 
@@ -35,7 +36,7 @@ namespace OOPS
         {
 
         }
-        public new void Enter()
+        public override void Enter()
         {
             Console.WriteLine("2");
             Console.WriteLine(name);
