@@ -22,9 +22,15 @@ namespace ConsoleApp5
     }
     class Program
     {
-        static void Main(string[] args)
+        static void Main2(string[] args)
         {
-            Calculator.AreEqual<int> (10, 20);
+            //Calculator.AreEqual<int> (10, 20);
+            //ExceptionHandling.Demo2();
+            //UserExcercise.UserDemo();
+            Multithreading.Demo();
+
+            Console.Clear();
+            Console.Write("Press any key to exit...");
             Console.ReadKey();
         }
     }
