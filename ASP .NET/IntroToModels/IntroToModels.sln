@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntroToModels", "IntroToModels\IntroToModels.csproj", "{1C161F4C-8180-473F-8A5B-0C9748F8D2BD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1C161F4C-8180-473F-8A5B-0C9748F8D2BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C161F4C-8180-473F-8A5B-0C9748F8D2BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C161F4C-8180-473F-8A5B-0C9748F8D2BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C161F4C-8180-473F-8A5B-0C9748F8D2BD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CE6518B0-75BB-42C4-AA89-7A0BACCAB695}
+	EndGlobalSection
+EndGlobal
