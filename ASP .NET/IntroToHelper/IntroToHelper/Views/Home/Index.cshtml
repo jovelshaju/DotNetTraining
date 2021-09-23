@@ -1,0 +1,57 @@
+﻿@using IntroToHelper.Models
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <!--Using In-line helpers-->
+        @helper ListHTML(string[] list) { 
+
+        <ul>
+            @foreach (string item in list)
+            {
+                <li>@item</li>
+            }
+        </ul>
+        
+    }
+        @helper TableHTML(List<Student> students) { 
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+            </tr>
+            @foreach (Student student in students)
+            {
+                <tr>
+                    <td>@student.Id</td>
+                    <td>@student.Name</td>
+                    <td>@student.Age</td>
+                </tr>
+            }
+        </table>
+    }
+        
+
+        <h2>List of Countires</h2>
+        @ListHTML(new string[] {"India", "Sweden", "Italy" })
+
+        <h2>Table of students details</h2>
+        @TableHTML(new List<Student> { new Student() {Id = 1, Name = "John", Age = 18},
+                                       new Student() {Id = 2, Name = "Peter", Age = 19},
+                                       new Student() {Id = 3, Name = "Doe", Age = 17},
+                                     })
+    </div>
+</body>
+</html>

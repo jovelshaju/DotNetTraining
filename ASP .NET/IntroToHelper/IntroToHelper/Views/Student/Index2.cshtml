@@ -1,0 +1,28 @@
+﻿@using IntroToHelper.Models
+@model Student
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index2</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("Index2", "Student", FormMethod.Post))
+        {
+
+            <h2>Student form</h2>
+            @Html.TextBoxFor(Model => Model.Id)
+            @Html.TextBoxFor(Model => Model.Name)
+            @Html.TextBoxFor(Model => Model.Age)
+
+            <input type="submit" name="submit" value="Submit" />
+        }
+    </div>
+</body>
+</html>
