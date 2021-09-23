@@ -27,7 +27,7 @@ namespace WebApplication4.Controllers
         [HttpGet]
         public Book Get(int id)
         {
-            Book book = bookList.FirstOrDefault(emp => emp.Id == id);
+            Book book = bookList.FirstOrDefault(bk => bk.Id == id);
             return book;
         }
 
@@ -40,15 +40,20 @@ namespace WebApplication4.Controllers
         }
 
         [HttpPut]
-        public string Put()
+        public Book Put(int id, Book book_update)
         {
-            return "put";
+            Book book = bookList.FirstOrDefault(bk => bk.Id == id);
+            int index = bookList.IndexOf(book);
+            bookList[index] = book_update;
+            return book_update;
         }
 
         [HttpDelete]
-        public string Delete()
+        public Book Delete(int id)
         {
-            return "delete";
+            Book book = bookList.FirstOrDefault(bk => bk.Id == id);
+            bookList.Remove(book);
+            return book;
         }
     }
 }
