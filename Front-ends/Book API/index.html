@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book API</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="./index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Sample Page For Book API</h2>
+        
+        <br>
+        Enter ID: 
+        <input type="number" id="idGet" label="Enter ID">
+        <button id="getBtn">GET</button>
+        <br>
+        
+        <hr>
+        Enter Title :
+        <input type="text" id="bookTitlePush" name="bookTitle" required>
+        <br>
+        Enter Autthor's Name :
+        <input type="text" id="bookAuthorPush" name="bookAuthor" required>
+        <br>
+        Enter Price :
+        <input type="number" id="bookPricePush" name="bookTitle" required>
+        <br>
+        <button id="pushBtn">CREATE</button>
+        <br>
+        
+        <hr>
+        Enter ID: 
+        <input type="number" id="idPut" label="Enter ID" required>
+        <button id="getDataBtn">GET DATA</button>
+        <br>
+        Enter Title :
+        <input type="text" id="bookTitlePut" name="bookTitle" required>
+        <br>
+        Enter Autthor's Name :
+        <input type="text" id="bookAuthorPut" name="bookAuthor" required>
+        <br>
+        Enter Price :
+        <input type="number" id="bookPricePut" name="bookTitle" required>
+        <br>
+        <button id="putDataBtn">UPDATE</button>
+        <br>
+        
+        <hr>
+        Enter ID:
+        <input type="number" id="idDelete" label="Enter ID">
+        <button id="deleteBtn">DELETE</button>
+        <br>
+        
+        <hr>
+        <h4>The result is shown here:</h4>
+        <div id="responseArea">
+            
+        </div>   
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            async function getData(id){
+                var returnData = null;
+                await $.ajax({
+                    url: `http://localhost:51716/api/book/${id}`,
+                    method: 'Get',
+                    success: function(data){
+                        // console.log(data)
+                        // console.log("Type: "+typeof(data));
+                        returnData = data;
+                        
+                    },
+                    error: function(error){
+                        console.log(error)
+                    }
+                })
+                return returnData;
+            }
+
+            $('#getBtn').click(async function(){
+                var id = "";
+                //console.log($('#idGet').val());
+                if($('#idGet').val()!=null){
+                    id = $('#idGet').val();
+                    console.log(id);
+                }
+                
+                data = await getData(id);
+                console.log(data);
+                data==null ? data='Data not found':data=JSON.stringify(data);
+                // console.log("Type 2: "+typeof(data));
+                $('#responseArea').html(data);
+                
+            })
+
+            $('#pushBtn').click(function(){
+                var title = $('#bookTitlePush').val();
+                var author = $('#bookAuthorPush').val();
+                var price = $('#bookPricePush').val();
+                var dataToSend = {
+                    "Id":0,
+                    "Title":title,
+                    "Author":author,
+                    "Price":price
+                }
+
+                $.ajax({
+                    url: 'http://localhost:51716/api/book',
+                    method: 'Post',
+                    data: JSON.stringify(dataToSend),
+                    contentType: "application/json; charset=utf-8",
+                    traditional: true,
+                    success: function (data) {
+                        console.log(data);
+                        $('#responseArea').html(JSON.stringify(data));
+                    },
+                    error: function(error){
+                        console.log(error)
+                    }
+                });
+            })
+
+            $('#getDataBtn').click(async ()=>{
+                var id = $('#idPut').val();
+                var data = await getData(id);
+                console.log(data)
+                if(data==null){
+                    $('#responseArea').html("Enter Valid ID");
+                }
+                else{
+                    $('#bookTitlePut').val(data.Title);
+                    $('#bookAuthorPut').val(data.Author);
+                    $('#bookPricePut').val(data.Price);
+                }
+            })
+
+            $('#putDataBtn').click(async ()=>{
+                var id = $('#idPut').val();
+                var title = $('#bookTitlePut').val();
+                var author = $('#bookAuthorPut').val();
+                var price = $('#bookPricePut').val();
+                var dataToSend = {
+                    "Id":id,
+                    "Title":title,
+                    "Author":author,
+                    "Price":price
+                };
+                $.ajax({
+                    url: `http://localhost:51716/api/book/${id}`,
+                    method: 'Put',
+                    data: JSON.stringify(dataToSend),
+                    contentType: "application/json; charset=utf-8",
+                    traditional: true,
+                    success: function (data) {
+                        console.log(data);
+                        $('#responseArea').html(JSON.stringify(data));
+                    },
+                    error: function(error){
+                        console.log(error)
+                    }
+                });
+            })
+
+            $('#deleteBtn').click( async ()=>{
+                var id = $('#idDelete').val();
+                $.ajax({
+                    url: `http://localhost:51716/api/book/${id}`,
+                    method: 'Delete',
+                    success: function (data) {
+                        console.log(data);
+                        $('#responseArea').html(JSON.stringify(data));
+                    },
+                    error: function(error){
+                        console.log(error)
+                    }
+                });
+            })
+        })
+    </script>
+</body>
+</html>
